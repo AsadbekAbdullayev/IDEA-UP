@@ -10,9 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: 'navbar.component.html',
   imports: [
     MatButtonModule,
-    CommonModule, // Import CommonModule
-    MatFormFieldModule, // Import Material Modules
-    MatInputModule, // Import Material Modules
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
     FormsModule,
     MatIconModule,
   ],

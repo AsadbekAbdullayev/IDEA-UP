@@ -19,11 +19,9 @@ export default class HomeComponent {
     { label: 'Sog`liq', id: 6 },
   ]);
   activeTab = signal<string>('');
-  inputText = 'TEST';
+  inputText = 'test signals';
 
   onTabsChange(tab: ITabData): void {
-    console.log('Ilvoldim, bratim: ', tab);
-
     this.activeTab.set(tab.label);
   }
 }
