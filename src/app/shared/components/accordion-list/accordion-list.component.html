@@ -1,0 +1,18 @@
+<div
+  class="w-full px-12 pt-6 pb-12 bg-[#F7F9FC] flex flex-col gap-5 rounded-xl"
+>
+  <p class="text-2xl font-bold text-gray-900">Fikrlar</p>
+
+  @for(item of accordionItems; track item.id) {
+  <app-accordion-item
+    [id]="item.id"
+    [author]="item.author"
+    [label]="item.label"
+    [description]="item.description"
+    [isOpen]="item.isOpen"
+    [isLiked]="item.isLiked"
+    [isNotLiked]="item.isNotLiked"
+    [isSaved]="item.isSaved"
+  ></app-accordion-item>
+  }
+</div>

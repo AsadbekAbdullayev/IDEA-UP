@@ -8,8 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 @Component({
-  selector: 'app-navbar',
-  templateUrl: 'navbar.component.html',
+  selector: 'app-footer',
+  templateUrl: 'footer.component.html',
   imports: [
     MatButtonModule,
     CommonModule,
@@ -21,6 +21,10 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     NzInputModule,
   ],
 })
-export class NavbarComponent {
+export class FooterComponent {
   userName: string = '';
+  currentYear: number = 0;
+  ngOnInit() {
+    this.currentYear = new Date().getFullYear();
+  }
 }

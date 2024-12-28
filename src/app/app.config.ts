@@ -9,6 +9,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { routes } from './app.routes';
+import { en_US, provideNzI18n } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common'; // Import CommonModule
+
+registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,7 +27,11 @@ export const appConfig: ApplicationConfig = {
       MatInputModule,
       MatIconModule,
       ReactiveFormsModule,
-      FormsModule
+      FormsModule,
+      CommonModule // Import CommonModule here
     ),
+    provideNzI18n(en_US),
+    provideAnimationsAsync(),
+    provideHttpClient(),
   ],
 };

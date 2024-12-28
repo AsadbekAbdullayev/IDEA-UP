@@ -1,0 +1,13 @@
+.default {
+  display: flex; /* Align elements horizontally */
+  align-items: center; /* Vertically center the items */
+  justify-content: center; /* Optional: Horizontally center the content */
+}
+
+.default p {
+  margin-right: 8px; /* Adjust space between the text and the icon */
+}
+
+.default svg {
+  display: inline-block; /* Ensure the SVG behaves like an inline element */
+}
