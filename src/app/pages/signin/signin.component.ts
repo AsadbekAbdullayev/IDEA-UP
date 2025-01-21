@@ -5,20 +5,12 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
-
-
-
-
-
-
-
-
-
 @Component({
   selector: 'app-signin',
   imports: [FormsModule, MatButtonModule, NzIconModule, NzInputModule],
   templateUrl: './signin.component.html',
 })
+  
 export default class SigninComponent {
   constructor(private message: NzMessageService) {}
   passwordVisible = false;
