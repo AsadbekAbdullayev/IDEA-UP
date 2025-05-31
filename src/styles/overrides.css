@@ -1,5 +1,4 @@
 :root {
-  /* Override Angular Material tab styles (manually set equivalent styles) */
   --mat-tab-active-indicator-color: orange;
   --mat-tab-divider-color: red;
 }
