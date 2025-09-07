@@ -1,18 +1,21 @@
-<div
-  class="w-full px-12 pt-6 pb-12 bg-[#F7F9FC] flex flex-col gap-5 rounded-xl"
->
-  <p class="text-2xl font-bold text-gray-900">Fikrlar</p>
+<div class="bg-secondary py-6 px-12 rounded-[0.875rem] w-full">
+  @if(ideas().length > 0) {
 
-  @for(item of accordionItems; track item.id) {
-  <app-accordion-item
-    [id]="item.id"
-    [author]="item.author"
-    [label]="item.label"
-    [description]="item.description"
-    [isOpen]="item.isOpen"
-    [isLiked]="item.isLiked"
-    [isNotLiked]="item.isNotLiked"
-    [isSaved]="item.isSaved"
-  ></app-accordion-item>
+  <h2 class="text-primary-heading text-gray-900 mb-6">{{ title() }}</h2>
+
+  <div class="flex flex-col gap-3">
+    @for(item of ideas(); track item.id) { 
+     @if(pageName() !== 'saved' || item.isSaved) {
+      <app-accordion-item
+        [item]="item"
+        (onSave)="onSaveClick($event)"
+        (onVote)="onVote($event, item.id)"
+        [canReact]="canReact()"
+        [canRemove]="canRemove()" />
+      } 
+    }
+  </div>
+  } @else {
+  <p>Huh, no ideas found...</p>
   }
 </div>

@@ -1,70 +1,8 @@
-<nav
-  class="w-full bg-[#F2F4F7] rounded-xl py-5 px-6 flex items-center justify-between"
->
-  <h1
-    class="font-mono font-[900] text-2xl max-[1500px]:text-xl max-[1500px]:text-nowrap max-[1500px]:mr-2"
-  >
-    Idea-up
-  </h1>
-
-  <nz-input-group
-    [nzPrefix]="suffixIconSearch"
-    class="w-full max-w-[570px] min-h-12 rounded-lg !border-none"
-  >
-    <input
-      type="text"
-      nz-input
-      placeholder="Search ideas..."
-      class="placeholder-gray-500 placeholder:text-xs placeholder:leading-4 placeholder:font-[400] !border-none"
-    />
-  </nz-input-group>
-  <ng-template #suffixIconSearch>
-    <svg
-      width="25"
-      height="24"
-      viewBox="0 0 25 24"
-      fill="none"
-      class="mx-2"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g clip-path="url(#clip0_1_234)">
-        <path
-          d="M12.1665 21C17.4132 21 21.6665 16.7467 21.6665 11.5C21.6665 6.25329 17.4132 2 12.1665 2C6.9198 2 2.6665 6.25329 2.6665 11.5C2.6665 16.7467 6.9198 21 12.1665 21Z"
-          stroke="#667085"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M22.6665 22L20.6665 20"
-          stroke="#667085"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_1_234">
-          <rect
-            width="24"
-            height="24"
-            fill="white"
-            transform="translate(0.666504)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  </ng-template>
-
-  <div class="flex gap-3 items-center max-[1500px]:hidden">
-    <button mat-button class="primary-button !bg-white min-h-12">
-      My ideas
-    </button>
-    <button mat-button class="primary-button !bg-white min-h-12">
-      Saved ideas
-    </button>
-    <button mat-button class="primary-button !bg-white min-h-12">
-      Account
-    </button>
+<nav class="w-full bg-primary rounded-xl py-5 px-6 flex items-center justify-between">
+  <button class="text-2xl" [routerLink]="['/home']">Idea-up</button>
+  <div class="flex gap-3 items-center">
+    <button mat-button class="primary-button !bg-white" [routerLink]="['/my-ideas']" routerLinkActive="!text-blue-400">My ideas</button>
+    <button mat-button class="primary-button !bg-white" [routerLink]="['/saved-ideas']" routerLinkActive="!text-blue-400">Saved ideas</button>
+    <button mat-button class="primary-button !bg-white" (click)="openAccountModal()">Account</button>
   </div>
 </nav>

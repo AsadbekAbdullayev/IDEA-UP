@@ -1,13 +1,12 @@
 import { Component, input, output } from '@angular/core';
 import { MatTabChangeEvent, MatTabsModule } from '@angular/material/tabs';
 import { ITabData } from '../../models/frontend/tab';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-tab',
   templateUrl: 'tab.component.html',
-  imports: [MatTabsModule, MatButtonModule, MatIconModule],
+  styleUrl: 'tab.component.scss',
+  imports: [MatTabsModule],
 })
 export class TabComponent {
   tabs = input<ITabData[]>([]);
