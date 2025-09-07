@@ -1,50 +1,39 @@
-import { Component, signal } from '@angular/core';
-import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
-import { TabComponent } from '../../shared/components/tab/tab.component';
-import { ITabData } from '../../shared/models/frontend/tab';
+import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { NavbarComponent, AccordionListComponent, TabComponent, ITabData } from '@shared';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { AccordionListComponent } from '../../shared/components/accordion-list/accordion-list.component';
+import { IdeasStore } from '../../store/ideas/ideas.store';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 @Component({
   selector: 'app-home',
-  imports: [
-    NavbarComponent,
-    TabComponent,
-    FormsModule,
-    MatButtonModule,
-    AccordionListComponent,
-    FooterComponent,
-  ],
+  imports: [NavbarComponent, TabComponent, FormsModule, AccordionListComponent],
   templateUrl: './home.component.html',
 })
-export default class HomeComponent {
-  tabs = signal([
-    { label: 'Ta`lim', id: 1 },
-    { label: 'Iqtisod', id: 2 },
-    { label: 'Qonun', id: 3 },
-    { label: 'Markaz', id: 4 },
-    { label: 'Respublika', id: 5 },
-    { label: 'Sog`liq', id: 6 },
-    { label: 'Madaniyat', id: 7 },
-    { label: 'Fan', id: 8 },
-    { label: 'Texnologiya', id: 9 },
-    { label: 'Taraqqiyot', id: 10 },
-    { label: 'Xavfsizlik', id: 11 },
-    { label: 'San`at', id: 12 },
-    { label: 'Adabiyot', id: 13 },
-    { label: 'Tabiat', id: 14 },
-    { label: 'Transport', id: 15 },
-    { label: 'Energetika', id: 16 },
-    { label: 'Infratuzilma', id: 17 },
-    { label: 'Ilm-fan', id: 18 },
-    { label: 'Sayyohlik', id: 19 },
-    { label: 'Axborot', id: 20 },
-  ]);
-  activeTab = signal<string>('');
-  inputText = 'test signals';
+export default class HomeComponent implements OnInit {
+  ideasStore = inject(IdeasStore);
+  destroyRef = inject(DestroyRef);
+
+  tabs = signal<ITabData[]>([]);
+
+  ngOnInit(): void {
+    this.ideasStore.setAllIdeas([]);
+    this.ideasStore.setIdeas(this.ideasStore.activeTab()!);
+
+    this.ideasStore
+      .getAllIdeas()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        const categories = this.ideasStore.categories().map(category => ({
+          label: category.name,
+          id: category.id,
+        }));
+
+        this.tabs.set(categories);
+      });
+  }
 
   onTabsChange(tab: ITabData): void {
-    this.activeTab.set(tab.label);
+    this.ideasStore.setActiveTab(tab.id);
+    this.ideasStore.setIdeas(tab.id);
   }
 }

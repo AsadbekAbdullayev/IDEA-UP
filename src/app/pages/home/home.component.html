@@ -1,8 +1,8 @@
-<main class="max-w-[1872px] m-auto flex flex-col gap-2 p-6 pb-2 bg-white">
+<main class="p-6 pb-2 bg-white">
   <app-navbar />
-  <div class="gap-32 py-6">
+  <div class="py-6">
     <app-tab (tabChange)="onTabsChange($event)" [tabs]="tabs()" />
-  </div>    
-  <app-accordion-list></app-accordion-list>
-  <app-footer></app-footer>
+  </div>
+
+  <app-accordion-list [pageName]="'home'" [ideas]="ideasStore.ideas()" />
 </main>

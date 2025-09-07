@@ -1,20 +1,5 @@
-<div class="flex justify-between items-center">
-  <div class="w-full max-w-[90%] flex justify-between items-center">
-    <mat-tab-group
-      [mat-stretch-tabs]="false"
-      (selectedTabChange)="onTabChange($event)"
-    >
-      @for (tab of tabs(); track tab) {
-      <mat-tab [label]="tab.label" />
-      }
-    </mat-tab-group>
-  </div>
-
-  <button
-    mat-button
-    class="primary-button !bg-white min-h-12 max-[1500px]:!hidden"
-  >
-    <mat-icon>filter_list</mat-icon>
-    Filters
-  </button>
-</div>
+<mat-tab-group [mat-stretch-tabs]="false" (selectedTabChange)="onTabChange($event)">
+  @for (tab of tabs(); track tab) {
+  <mat-tab [label]="tab.label" />
+  }
+</mat-tab-group>

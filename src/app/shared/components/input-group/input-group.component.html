@@ -1,0 +1,15 @@
+<form #form="ngForm" class="flex justify-center items-center gap-3">
+  @for(item of inputsArray; track item) {
+  <input
+    #input
+    ngModel
+    [id]="item"
+    [name]="item.toString()"
+    [maxLength]="1"
+    type="text"
+    (focus)="onFocus(item.toString())"
+    (input)="onInputFill(item.toString())"
+    class="input-container"
+  />
+  }
+</form>

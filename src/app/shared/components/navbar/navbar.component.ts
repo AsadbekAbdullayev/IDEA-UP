@@ -1,26 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { CommonModule } from '@angular/common'; // Import CommonModule for basic directives like ngIf, ngFor
-import { FormsModule } from '@angular/forms'; // If using ngModel
-import { MatIconModule } from '@angular/material/icon';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzInputModule } from 'ng-zorro-antd/input';
+import { MatDialog } from '@angular/material/dialog';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AccountModalComponent } from '../../modals/account-modal/account-modal.component';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: 'navbar.component.html',
-  imports: [
-    MatButtonModule,
-    CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatIconModule,
-    NzIconModule,
-    NzInputModule,
-  ],
+  imports: [MatButtonModule, RouterLink, RouterLinkActive],
 })
 export class NavbarComponent {
-  userName: string = '';
+  dialog = inject(MatDialog);
+
+  openAccountModal(): void {
+    const dialogRef = this.dialog.open(AccountModalComponent, {
+      width: '70%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }
