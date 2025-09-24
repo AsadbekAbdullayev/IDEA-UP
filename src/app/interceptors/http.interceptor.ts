@@ -1,11 +1,10 @@
 import {
   HttpEvent,
-  HttpEventType,
   HttpHandlerFn,
   HttpRequest,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { catchError, finalize, Observable, of, tap } from 'rxjs';
+import { catchError, finalize, Observable, throwError } from 'rxjs';
 import { HTTPLoaderService } from '../services/http-loader.service';
 
 export function httpInterceptor(
@@ -15,25 +14,19 @@ export function httpInterceptor(
   const httpLoaderService = inject(HTTPLoaderService);
   httpLoaderService.isLoading.set(true);
 
+  const authToken = localStorage.getItem('access_token') || '';
   const reqWithHeader = req.clone({
-    headers: req.headers.set(
-      'Authorization',
-      'Bearer ' + localStorage.getItem('access_token')
-    ),
+    setHeaders: { Authorization: `Bearer ${authToken}` },
   });
 
   return next(reqWithHeader).pipe(
-    tap((event: HttpEvent<unknown>) => {
-      if (event.type === HttpEventType.Response) {
-        httpLoaderService.isLoading.set(false);
-      }
+    catchError((error) => {
+      // bu yerda xatolikni qaytaramiz
+      return throwError(() => error);
     }),
     finalize(() => {
+      // response bo‘lsa ham, error bo‘lsa ham isLoading = false bo‘ladi
       httpLoaderService.isLoading.set(false);
-    }),
-    catchError(error => {
-      httpLoaderService.isLoading.set(false);
-      return of(error);
     })
   );
 }
