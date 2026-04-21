@@ -1,11 +1,11 @@
 # IDEA-UP 💡
 
-[![Live Demo](https://img.shields.io/badge/demo-online-green)](https://idea-up.vercel.app)
+[![Live Demo](https://img.shields.io/badge/demo-online-red)](https://idea-up.vercel.app)
 
 ## 📌 Project Purpose
 
-**IDEA-UP** is a simple web app where users can **share ideas** and **like** others’ ideas.  
-The most liked ideas will automatically appear at the top of the list.
+**IDEA-UP** is a streamlined web application designed for users to **share innovative ideas** and **upvote** (like) submissions from others.  
+The core logic ensures that the most popular ideas automatically rise to the top of the feed, providing a real-time leaderboard of community creativity.
 
 👉 Live link: [idea-up.vercel.app](https://idea-up.vercel.app)
 
@@ -13,18 +13,18 @@ The most liked ideas will automatically appear at the top of the list.
 
 ## ✨ Features
 
-- ✍️ Post new ideas
-- 👍 Like ideas from others
-- 📊 Automatically rank ideas (most liked at the top)
-- ⚡ Modern and fast UI (React + Vercel)
+- ✍️ **Post Ideas:** Quickly share your thoughts with the community.
+- 👍 **Engagement:** Like and support ideas from fellow users.
+- 📊 **Dynamic Ranking:** Automatic sorting based on the highest number of likes.
+- ⚡ **Performance:** Built as a Single Page Application (SPA) for a fast and smooth user experience.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React, TypeScript
-- **Styling:** Tailwind CSS / Ant Design (if used)
-- **Backend:** (add if applicable)
+- **Framework:** [Angular](https://angular.dev/)
+- **Language:** TypeScript
+- **Styling:** CSS / Tailwind CSS
 - **Deployment:** Vercel
 
 ---
@@ -34,6 +34,5 @@ The most liked ideas will automatically appear at the top of the list.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/AsadbekAbdullayev/IDEA-UP.git
+git clone [https://github.com/AsadbekAbdullayev/IDEA-UP.git](https://github.com/AsadbekAbdullayev/IDEA-UP.git)
 cd IDEA-UP
-```
